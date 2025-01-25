@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://duu7qh014of0k"]
+[gd_scene load_steps=15 format=3 uid="uid://duu7qh014of0k"]
 
 [ext_resource type="Script" path="res://scripts/Level1.gd" id="1_ydmht"]
 [ext_resource type="Texture2D" uid="uid://cwhllfsfoh326" path="res://assets/personajes/personaje.png" id="2_sv33n"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cby5pcjg7x4wg" path="res://assets/personajes/border.png" id="6_f6dkj"]
 [ext_resource type="PackedScene" uid="uid://bmudprryk23v3" path="res://scenes/ObstacleTemplate.tscn" id="6_icskm"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="7_5ufxe"]
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="8_brm2c"]
+[ext_resource type="PackedScene" uid="uid://ctbgkvdpr6n8s" path="res://scenes/pause_menu.tscn" id="9_05c03"]
 
 [sub_resource type="GDScript" id="GDScript_oi7l5"]
 script/source = "extends CharacterBody2D
@@ -120,3 +122,7 @@ position = Vector2(4, -294)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, 1)
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("9_05c03")]
+visible = false
+script = ExtResource("8_brm2c")

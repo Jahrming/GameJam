@@ -35,3 +35,22 @@ func on_player_reaches_goal():
 		get_tree().change_scene("res://scenes/Level2.tscn")
 	else:
 		print("La meta aún no está activa.")
+		
+#codigo pausa
+@onready var pause_menu = $Camera2D/PauseMenu
+var paused = false
+
+func _process(_delta):  # Cambiamos "delta" por "_delta"
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	
+	paused = !paused
+
