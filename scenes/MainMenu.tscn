@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://hkulpsgm6m5v"]
+
+[ext_resource type="Script" path="res://scripts/ButtonStart.gd" id="1_p6px0"]
+[ext_resource type="Script" path="res://scripts/ButtonExit.gd" id="2_ogwfm"]
+
+[node name="MainMenu" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.977
+offset_left = -12.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = -0.0960083
+grow_horizontal = 2
+
+[node name="ButtonStart" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.101
+anchor_top = 0.049
+anchor_right = 0.378
+anchor_bottom = 0.125
+offset_left = 0.233994
+offset_top = 0.0319977
+offset_right = 0.251984
+text = "Iniciar Juego"
+script = ExtResource("1_p6px0")
+
+[node name="ButtonExit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.673
+anchor_top = 0.054
+anchor_right = 0.867
+anchor_bottom = 0.125
+offset_left = -61.718
+offset_top = -0.128002
+offset_right = 24.0779
+grow_horizontal = 2
+grow_vertical = 2
+text = "Salir"
+script = ExtResource("2_ogwfm")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.017
+anchor_bottom = 0.035
+offset_left = 398.0
+offset_top = 393.0
+offset_right = 799.416
+offset_bottom = 414.6
+text = "¡Bienvenido a Mi Juego"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 235
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true

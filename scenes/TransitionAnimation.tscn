@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bywsi64mvukye"]
+
+[ext_resource type="VideoStream" path="res://assets/stream/animacion-burbujas-explotando-___-no-encontré-el-emoji-de-burbuja_.ogv" id="1_vr5vm"]
+[ext_resource type="Script" path="res://scripts/TransitionAnimation.gd" id="2_pe0hd"]
+
+[node name="TransitionAnimation" type="Node2D"]
+script = ExtResource("2_pe0hd")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_vr5vm")
+autoplay = true

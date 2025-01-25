@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4ekrk2hh4vx4"]
+
+[ext_resource type="Script" path="res://scripts/Animation.gd" id="1_q5pu7"]
+[ext_resource type="VideoStream" path="res://assets/stream/videoplayback.ogv" id="2_2u8bg"]
+
+[node name="Animation" type="Node2D"]
+script = ExtResource("1_q5pu7")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 1154.0
+offset_bottom = 656.0
+stream = ExtResource("2_2u8bg")
+autoplay = true
+expand = true
