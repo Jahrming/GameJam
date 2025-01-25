@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmudprryk23v3"]
+
+[ext_resource type="Script" path="res://scripts/ObstacleTemplate.gd" id="1_ge8n8"]
+[ext_resource type="Texture2D" uid="uid://c37m3pu1cmipl" path="res://assets/personajes/enemy.png" id="1_vtrf2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_15cm4"]
+radius = 104.005
+
+[node name="ObstacleTemplate" type="Area2D"]
+script = ExtResource("1_ge8n8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(243, 109)
+texture = ExtResource("1_vtrf2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(244, 110)
+shape = SubResource("CircleShape2D_15cm4")

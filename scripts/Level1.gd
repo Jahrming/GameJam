@@ -1,42 +1,37 @@
 extends Node2D
 
+# Variables exportadas para configurar desde el editor
+@export var spawn_interval := 1.0  # Tiempo entre generación de obstáculos
+@export var obstacle_speed := 200.0  # Velocidad de caída de los obstáculos
+@export var num_obstacles_min := 5  # Número mínimo de obstáculos
+@export var num_obstacles_max := 10  # Número máximo de obstáculos
 
-var obstacles_avoided := 0  # Contador de obstáculos esquivados
-@export var max_obstacles_to_win := 40  # Cantidad necesaria para ganar
+# Variables internas
+var obstacles_spawned := 0  # Contador de obstáculos generados
+var total_obstacles := 0  # Total de obstáculos a generar
+var meta_activated := false  # Indica si la meta está activa
 
 func _ready():
-	print("¡Nivel iniciado!")
-	# Conectar detección de obstáculos generados al nodo Obstacles
-	foreach_obstacle()
+	# Calcular el número de obstáculos a generar
+	total_obstacles = randi_range(num_obstacles_min, num_obstacles_max)
+	print("Se generarán %s obstáculos." % total_obstacles)
 
-func foreach_obstacle():
-	for child in $"Obstacles".get_children():
-		child.connect("queue_free", Callable(self, "_on_obstacle_passed"))
+	# Llamar a Spawner para iniciar la generación de obstáculos
+	$Spawner.start_spawning(total_obstacles)
 
-func _on_obstacle_passed():
-	obstacles_avoided += 1
-	print("Obstáculos esquivados: %d" % obstacles_avoided)
-	if obstacles_avoided >= max_obstacles_to_win:
-		print("¡Nivel completado! Cargando el siguiente nivel...")
-		get_tree().change_scene_to_file("res://scenes/Level2.tscn")  # Cambiar al siguiente nivel
+	# Desactivar la colisión de la meta al inicio
 
 
-#codigo pausa
-@onready var pause_menu =$Camera2D/PauseMenu
-var paused = false
+func activate_goal():
+	# Activa la meta al terminar la generación de obstáculos
+	meta_activated = true
+	$Goal.set_meta_active(true)
+	print("¡Meta activada!")
 
-func _process(delta):
-	if Input.is_action_just_pressed("pause"):
-		pauseMenu()
-
-
-func pauseMenu():
-	if paused:
-		pause_menu.hide()
-		Engine.time_scale = 1
+func on_player_reaches_goal():
+	# Verificar si el jugador puede completar el nivel
+	if meta_activated:
+		print("¡Nivel completado! Cambiando al siguiente nivel...")
+		get_tree().change_scene("res://scenes/Level2.tscn")
 	else:
-		pause_menu.show()
-		Engine.time_scale = 0
-	
-	paused = !paused
-	
+		print("La meta aún no está activa.")

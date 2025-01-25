@@ -1,13 +1,43 @@
 [gd_scene load_steps=13 format=3 uid="uid://duu7qh014of0k"]
 
 [ext_resource type="Script" path="res://scripts/Level1.gd" id="1_ydmht"]
-[ext_resource type="PackedScene" uid="uid://ctbgkvdpr6n8s" path="res://scenes/pause_menu.tscn" id="2_7folq"]
 [ext_resource type="Texture2D" uid="uid://cwhllfsfoh326" path="res://assets/personajes/personaje.png" id="2_sv33n"]
-[ext_resource type="Script" path="res://scripts/Obstacles.gd" id="3_5prbc"]
-[ext_resource type="Script" path="res://scripts/ObstacleTemplate.gd" id="4_extvc"]
+[ext_resource type="Script" path="res://scripts/Obstacle.gd" id="3_f4d3p"]
 [ext_resource type="Texture2D" uid="uid://c37m3pu1cmipl" path="res://assets/personajes/enemy.png" id="5_wae52"]
 [ext_resource type="Texture2D" uid="uid://cby5pcjg7x4wg" path="res://assets/personajes/border.png" id="6_f6dkj"]
+[ext_resource type="PackedScene" uid="uid://bmudprryk23v3" path="res://scenes/ObstacleTemplate.tscn" id="6_icskm"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="7_5ufxe"]
+
+[sub_resource type="GDScript" id="GDScript_oi7l5"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+
+
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction = Input.get_axis(\"ui_left\", \"ui_right\")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfqfq"]
 radius = 99.925
@@ -22,9 +52,14 @@ size = Vector2(669, 251.375)
 size = Vector2(222.697, 698)
 
 [node name="Level1" type="Node2D"]
+position = Vector2(560, 305)
 script = ExtResource("1_ydmht")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+z_as_relative = false
+position = Vector2(1, 1)
+motion_mode = 1
+script = SubResource("GDScript_oi7l5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(0, 250)
@@ -32,22 +67,25 @@ rotation = 0.000531789
 texture = ExtResource("2_sv33n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 250)
+position = Vector2(0, 254)
 rotation = 4.8884
 shape = SubResource("CircleShape2D_dfqfq")
 
-[node name="Obstacles" type="Node2D" parent="."]
-script = ExtResource("3_5prbc")
+[node name="Obstacle" type="Area2D" parent="."]
+script = ExtResource("3_f4d3p")
 
-[node name="ObstacleTemplate" type="Node2D" parent="Obstacles"]
-script = ExtResource("4_extvc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/ObstacleTemplate"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
 rotation = -0.00231151
 shape = SubResource("CircleShape2D_g2pt1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstacles/ObstacleTemplate"]
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
 texture = ExtResource("5_wae52")
+
+[node name="Spawner" type="Node2D" parent="."]
+rotation = 0.141372
+skew = -0.0593412
+script = ExtResource("7_5ufxe")
+obstacle_scene = ExtResource("6_icskm")
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -76,20 +114,9 @@ position = Vector2(496, 3.99999)
 shape = SubResource("RectangleShape2D_guccf")
 
 [node name="Goal" type="Area2D" parent="."]
+position = Vector2(4, -294)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
 
-[node name="Spawner" type="Node2D" parent="."]
-script = ExtResource("7_5ufxe")
-
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="PauseMenu" parent="Camera2D" instance=ExtResource("2_7folq")]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-size_flags_horizontal = 4
-metadata/_edit_use_anchors_ = true
+position = Vector2(1, 1)
