@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://duu7qh014of0k"]
+
+[ext_resource type="Script" path="res://scripts/Level1.gd" id="1_ydmht"]
+[ext_resource type="Texture2D" uid="uid://cwhllfsfoh326" path="res://assets/personajes/personaje.png" id="2_sv33n"]
+[ext_resource type="Script" path="res://scripts/Obstacles.gd" id="3_5prbc"]
+[ext_resource type="Script" path="res://scripts/ObstacleTemplate.gd" id="4_extvc"]
+[ext_resource type="Texture2D" uid="uid://c37m3pu1cmipl" path="res://assets/personajes/enemy.png" id="5_wae52"]
+[ext_resource type="Texture2D" uid="uid://cby5pcjg7x4wg" path="res://assets/personajes/border.png" id="6_f6dkj"]
+[ext_resource type="Script" path="res://scripts/Spawner.gd" id="7_5ufxe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dfqfq"]
+radius = 99.925
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2pt1"]
+radius = 105.119
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5csh1"]
+size = Vector2(669, 251.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guccf"]
+size = Vector2(222.697, 698)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_ydmht")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(0, 250)
+rotation = 0.000531789
+texture = ExtResource("2_sv33n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 250)
+rotation = 4.8884
+shape = SubResource("CircleShape2D_dfqfq")
+
+[node name="Obstacles" type="Node2D" parent="."]
+script = ExtResource("3_5prbc")
+
+[node name="ObstacleTemplate" type="Node2D" parent="Obstacles"]
+script = ExtResource("4_extvc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/ObstacleTemplate"]
+rotation = -0.00231151
+shape = SubResource("CircleShape2D_g2pt1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/ObstacleTemplate"]
+texture = ExtResource("5_wae52")
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="BorderLeft" type="StaticBody2D" parent="Borders"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/BorderLeft"]
+position = Vector2(-500, 0)
+rotation = 1.5708
+texture = ExtResource("6_f6dkj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BorderLeft"]
+position = Vector2(-516.687, -3.5)
+rotation = 1.5655
+shape = SubResource("RectangleShape2D_5csh1")
+one_way_collision_margin = 0.0
+
+[node name="BorderRight" type="StaticBody2D" parent="Borders"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/BorderRight"]
+position = Vector2(500, 25)
+rotation = -1.56973
+texture = ExtResource("6_f6dkj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BorderRight"]
+position = Vector2(496, 3.99999)
+shape = SubResource("RectangleShape2D_guccf")
+
+[node name="Goal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("7_5ufxe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
