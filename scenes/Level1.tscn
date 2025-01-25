@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://duu7qh014of0k"]
+[gd_scene load_steps=13 format=3 uid="uid://duu7qh014of0k"]
 
 [ext_resource type="Script" path="res://scripts/Level1.gd" id="1_ydmht"]
+[ext_resource type="PackedScene" uid="uid://ctbgkvdpr6n8s" path="res://scenes/pause_menu.tscn" id="2_7folq"]
 [ext_resource type="Texture2D" uid="uid://cwhllfsfoh326" path="res://assets/personajes/personaje.png" id="2_sv33n"]
 [ext_resource type="Script" path="res://scripts/Obstacles.gd" id="3_5prbc"]
 [ext_resource type="Script" path="res://scripts/ObstacleTemplate.gd" id="4_extvc"]
@@ -82,3 +83,13 @@ shape = SubResource("RectangleShape2D_guccf")
 script = ExtResource("7_5ufxe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("2_7folq")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true

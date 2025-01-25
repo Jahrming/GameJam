@@ -1,5 +1,6 @@
 extends Node2D
 
+
 var obstacles_avoided := 0  # Contador de obstáculos esquivados
 @export var max_obstacles_to_win := 40  # Cantidad necesaria para ganar
 
@@ -18,3 +19,24 @@ func _on_obstacle_passed():
 	if obstacles_avoided >= max_obstacles_to_win:
 		print("¡Nivel completado! Cargando el siguiente nivel...")
 		get_tree().change_scene_to_file("res://scenes/Level2.tscn")  # Cambiar al siguiente nivel
+
+
+#codigo pausa
+@onready var pause_menu =$Camera2D/PauseMenu
+var paused = false
+
+func _process(delta):
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	
+	paused = !paused
+	
