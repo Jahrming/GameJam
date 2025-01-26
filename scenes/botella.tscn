@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk5lnnnuj3gka"]
+
+[ext_resource type="Texture2D" uid="uid://jgx4xpj2w76t" path="res://assets/botella/Botella vacía .PNG" id="1_vtdbp"]
+[ext_resource type="Texture2D" uid="uid://c7y04rt383l5m" path="res://assets/botella/Nivel 1.PNG" id="2_yixv8"]
+[ext_resource type="Texture2D" uid="uid://uesthvnxnfk5" path="res://assets/botella/Nivel 2.PNG" id="3_1xysa"]
+[ext_resource type="Texture2D" uid="uid://db8qvmwvj5r84" path="res://assets/botella/Nivel 3.PNG" id="4_vktaf"]
+[ext_resource type="Texture2D" uid="uid://b73i12wkrisdf" path="res://assets/botella/Nivel 4.PNG" id="5_7bu8k"]
+[ext_resource type="Texture2D" uid="uid://0d5j8adbf0lo" path="res://assets/botella/Nivel 5.PNG" id="6_qsndr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5q56j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vtdbp")
+}],
+"loop": true,
+"name": &"0%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yixv8")
+}],
+"loop": true,
+"name": &"20%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1xysa")
+}],
+"loop": true,
+"name": &"40%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vktaf")
+}],
+"loop": true,
+"name": &"60%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7bu8k")
+}],
+"loop": true,
+"name": &"80%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qsndr")
+}],
+"loop": true,
+"name": &"99%",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5q56j")
+animation = &"99%"

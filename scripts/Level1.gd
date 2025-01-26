@@ -54,11 +54,3 @@ func pauseMenu():
 	
 	paused = !paused
 	
-func toggle_pause():
-	# Alterna el estado de pausa
-	paused = !paused
-	get_tree().paused = paused  # Pausa/despausa el árbol globalmente
-	if pause_menu:
-		pause_menu.visible = paused  # Muestra u oculta el menú de pausa
-
-

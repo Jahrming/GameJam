@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxe8tx5uphvlh"]
+
+[ext_resource type="Script" path="res://scenes/menupantallanv_1.gd" id="1_i2y43"]
+[ext_resource type="Texture2D" uid="uid://ci1k7i33hx5fj" path="res://assets/images/Mesa de trabajo 83.png" id="1_nufrs"]
+[ext_resource type="Texture2D" uid="uid://dexbcom5025b5" path="res://assets/botella/Mesa de trabajo 83 copia.png" id="2_7gqbn"]
+[ext_resource type="Texture2D" uid="uid://bgpwcvtebdr6a" path="res://assets/botella/Mesa de trabajo 83 copia 8.png" id="3_hdqf5"]
+[ext_resource type="Texture2D" uid="uid://ccajvkahsddq7" path="res://assets/botella/Mesa de trabajo 83 copia 4.png" id="4_kd7wu"]
+
+[node name="menupantallanv1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i2y43")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.340097, 0.340097)
+theme_override_constants/separation = 20
+
+[node name="pause" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_nufrs")
+texture_pressed = ExtResource("2_7gqbn")
+texture_hover = ExtResource("2_7gqbn")
+
+[node name="return" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_hdqf5")
+texture_pressed = ExtResource("4_kd7wu")
+texture_hover = ExtResource("4_kd7wu")
+
+[connection signal="pressed" from="VBoxContainer/pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="VBoxContainer/return" to="." method="_on_return_pressed"]

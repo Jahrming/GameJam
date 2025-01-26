@@ -91,7 +91,7 @@ grow_vertical = 2
 scale = Vector2(0.442731, 0.50507)
 theme_override_constants/separation = 60
 
-[node name="Jugar" type="TextureButton" parent="Control/VBoxContainer"]
+[node name="jugar" type="TextureButton" parent="Control/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_vuq75")
 texture_pressed = ExtResource("4_xjgpb")
@@ -117,5 +117,5 @@ libraries = {
 }
 autoplay = "Sparkle"
 
-[connection signal="pressed" from="Control/VBoxContainer/Jugar" to="Control" method="_on_jugar_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/jugar" to="Control" method="_on_jugar_pressed"]
 [connection signal="pressed" from="salir" to="Control" method="_on_salir_pressed"]

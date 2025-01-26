@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://duu7qh014of0k"]
+[gd_scene load_steps=56 format=3 uid="uid://duu7qh014of0k"]
 
 [ext_resource type="Script" path="res://scripts/Level1.gd" id="1_ydmht"]
 [ext_resource type="Texture2D" uid="uid://ode7b18civm0" path="res://assets/images/Nuevo entorno de juego hud.png" id="2_4mioq"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="7_5ufxe"]
 [ext_resource type="PackedScene" uid="uid://ctbgkvdpr6n8s" path="res://scenes/pause_menu.tscn" id="9_05c03"]
 [ext_resource type="Texture2D" uid="uid://bwc4h68dscwsw" path="res://assets/images/Mesa de trabajo 71.png" id="10_0cnef"]
+[ext_resource type="PackedScene" uid="uid://bxe8tx5uphvlh" path="res://scenes/menupantallanv_1.tscn" id="12_5nbis"]
 
 [sub_resource type="GDScript" id="GDScript_oi7l5"]
 script/source = "extends CharacterBody2D
@@ -455,8 +456,8 @@ position = Vector2(1, 1)
 [node name="PauseMenu" parent="Camera2D" instance=ExtResource("9_05c03")]
 visible = false
 
-[node name="Button" type="Button" parent="."]
-offset_left = 930.0
-offset_top = -250.0
-offset_right = 1234.0
-offset_bottom = 47.0
+[node name="menupantallanv1" parent="." instance=ExtResource("12_5nbis")]
+offset_left = 500.0
+offset_top = -328.0
+offset_right = 500.0
+offset_bottom = -328.0
