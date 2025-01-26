@@ -23,4 +23,4 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.name == "Player":  # Verifica si el nodo tocado es el jugador
 		print("¡Jugador eliminado por un obstáculo!")
-		get_tree().change_scene_to_file("res://scenes/GameOver.tscn")  # Cambia al MainMenu
+		get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")  # Cambia al MainMenu

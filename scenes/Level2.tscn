@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6xj1yqxu11q7"]
+
+[ext_resource type="Texture2D" uid="uid://o2whfx72a66j" path="res://assets/fonts/Mesa de trabajo 41_1.png" id="1_2mxxg"]
+[ext_resource type="Texture2D" uid="uid://bfml5yhjul5v0" path="res://assets/walls/Mesa de trabajo 42 copia.png" id="2_0gfbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgudh"]
+size = Vector2(51, 654)
+
+[node name="Level2" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1.10545, -2.50001)
+scale = Vector2(1.94277, 1.94277)
+texture = ExtResource("1_2mxxg")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall1" type="StaticBody2D" parent="Walls"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/Wall1"]
+position = Vector2(-563, -18)
+scale = Vector2(0.851351, 1.27029)
+texture = ExtResource("2_0gfbf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall1"]
+position = Vector2(-559.5, -3)
+shape = SubResource("RectangleShape2D_qgudh")
+
+[node name="Wall2" type="StaticBody2D" parent="Walls"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/Wall2"]
+position = Vector2(549, -7)
+scale = Vector2(0.851351, 1.27029)
+texture = ExtResource("2_0gfbf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
+position = Vector2(552, 3)
+shape = SubResource("RectangleShape2D_qgudh")
+
+[node name="Wall3" type="StaticBody2D" parent="Walls"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/Wall3"]
+position = Vector2(1037, -203)
+texture = ExtResource("2_0gfbf")
+
+[node name="Goal" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Goal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+
+[node name="Camera2D" type="Camera2D" parent="."]

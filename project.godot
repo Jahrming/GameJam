@@ -10,21 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Game Jam"
+config/name="GlobalGameJab10"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[autoload]
-
-Global="*res://scripts/Global.gd"
-
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
-window/size/mode=1
-window/size/borderless=true
 window/stretch/mode="viewport"
 
 [input]
@@ -41,5 +33,6 @@ pause={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

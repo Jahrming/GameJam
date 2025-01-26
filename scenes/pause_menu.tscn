@@ -1,18 +1,40 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctbgkvdpr6n8s"]
+[gd_scene load_steps=9 format=3 uid="uid://ctbgkvdpr6n8s"]
 
-[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_kdrne"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_kdrne"]
 [ext_resource type="Shader" path="res://scenes/pause_menu.gdshader" id="1_w2n1c"]
-[ext_resource type="Texture2D" uid="uid://87pfavqnt2ao" path="res://assets/images/Mesa de trabajo 83 copia 3.png" id="4_predi"]
-[ext_resource type="Texture2D" uid="uid://2ipx8bawxbuj" path="res://assets/botella/Mesa de trabajo 83 copia 2.png" id="4_tiw3o"]
-[ext_resource type="Texture2D" uid="uid://c01qfd800o6ec" path="res://assets/images/Mesa de trabajo 83 copia.png" id="5_8h4uf"]
-[ext_resource type="Texture2D" uid="uid://der6pvy08a0o3" path="res://assets/botella/Mesa de trabajo 83 copia 9.png" id="5_s5gdb"]
-[ext_resource type="Texture2D" uid="uid://dw1fup57itjbd" path="res://assets/botella/Mesa de trabajo 83 copia 3.png" id="7_dhrtk"]
-[ext_resource type="Texture2D" uid="uid://bgpwcvtebdr6a" path="res://assets/botella/Mesa de trabajo 83 copia 8.png" id="8_hdd7m"]
-[ext_resource type="Texture2D" uid="uid://ccajvkahsddq7" path="res://assets/botella/Mesa de trabajo 83 copia 4.png" id="9_xksbq"]
+[ext_resource type="Script" path="res://scripts/ButtonResume.gd" id="3_7bha0"]
+[ext_resource type="Script" path="res://scripts/ButtonQuitResume.gd" id="4_slcwp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5qtor"]
 shader = ExtResource("1_w2n1c")
 shader_parameter/amount = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qyig"]
+bg_color = Color(0.550784, 0.587858, 0.776372, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k27ax"]
+bg_color = Color(0.351332, 0.38507, 0.579894, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsc1u"]
+bg_color = Color(0.245383, 0.271613, 0.428774, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -25,55 +47,48 @@ script = ExtResource("1_kdrne")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_5qtor")
-layout_mode = 2
-offset_left = 561.0
-offset_top = 400.0
-offset_right = 1052.0
-offset_bottom = 583.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0475577, 0.0475576, 0.0475576, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -182.0
-offset_top = -123.0
-offset_right = 793.0
-offset_bottom = 168.0
+offset_left = -24.5
+offset_top = -25.0
+offset_right = 24.5
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.305236, 0.305236)
+metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 30
+theme_override_constants/separation = 25
 
-[node name="reanudar" type="TextureButton" parent="MarginContainer2/HBoxContainer"]
+[node name="ButtonResume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("5_8h4uf")
-texture_pressed = ExtResource("4_tiw3o")
-texture_hover = ExtResource("4_tiw3o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3qyig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k27ax")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jsc1u")
+text = "Volver"
+script = ExtResource("3_7bha0")
 
-[node name="reiniciar" type="TextureButton" parent="MarginContainer2/HBoxContainer"]
+[node name="ButtonQuit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("5_s5gdb")
-texture_pressed = ExtResource("4_predi")
-texture_hover = ExtResource("7_dhrtk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3qyig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k27ax")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jsc1u")
+text = "Salir"
+script = ExtResource("4_slcwp")
 
-[node name="atras" type="TextureButton" parent="MarginContainer2/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("8_hdd7m")
-texture_pressed = ExtResource("9_xksbq")
-texture_hover = ExtResource("9_xksbq")
-
-[connection signal="pressed" from="MarginContainer2/HBoxContainer/reanudar" to="." method="_on_reanudar_pressed"]
-[connection signal="pressed" from="MarginContainer2/HBoxContainer/reiniciar" to="." method="_on_reiniciar_pressed"]
-[connection signal="pressed" from="MarginContainer2/HBoxContainer/atras" to="." method="_on_atras_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

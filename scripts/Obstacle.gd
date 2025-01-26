@@ -17,5 +17,5 @@ func _process(delta):
 # Detecta si el obstáculo toca al jugador
 func _on_body_entered(body):
 	if body.name == "Player":
-		print("¡Jugador tocado por un obstáculo! Cambiando al GameOver.")
-		get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
+		print("¡Jugador tocado por un obstáculo! Cambiando al MainMenu.")
+		get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")

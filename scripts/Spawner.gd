@@ -1,71 +1,51 @@
 extends Node2D
 
-@export var spawn_interval_min: float = 2.0  # Intervalo mínimo inicial (en segundos)
-@export var spawn_interval_max: float = 3.0  # Intervalo máximo inicial (en segundos)
-@export var obstacle_scene: PackedScene  # Escena del obstáculo
-@export var acceleration_interval: float = 30.0  # Tiempo (en segundos) entre cada aceleración
-@export var min_spawn_interval: float = 0.5  # Límite mínimo para el intervalo de generación
+@export var spawn_interval_min: float = 1.0  # Tiempo mínimo entre spawns
+@export var spawn_interval_max: float = 2.0  # Tiempo máximo entre spawns
+@export var total_obstacles: int = 40  # Número total de obstáculos
+@export var obstacle_scene: PackedScene  # Escena del obstáculo (se asigna en el Inspector)
 
-var spawning: bool = false  # Controla si los obstáculos se están generando
-var timer_acceleration: Timer  # Timer para manejar la aceleración
 var obstacles_generated: int = 0  # Contador de obstáculos generados
+var level_ending := false  # Controla si el nivel está terminando
 
-func _ready() -> void:
-	# Configuramos el temporizador de aceleración
-	timer_acceleration = Timer.new()
-	timer_acceleration.one_shot = false
-	timer_acceleration.wait_time = acceleration_interval
-	add_child(timer_acceleration)
-	
-	# Usamos el nuevo sistema de Callable
-	timer_acceleration.connect("timeout", Callable(self, "_accelerate_spawn_rate"))
+func start_spawning(total_obstacles: int) -> void:
+	self.total_obstacles = total_obstacles
+	generate_obstacles()
 
-func start_spawning_infinite() -> void:
-	# Inicia la generación infinita
-	spawning = true
-	timer_acceleration.start()  # Comienza el temporizador de aceleración
-	spawn_obstacles_infinite()
-
-func spawn_obstacles_infinite() -> void:
-	while spawning:
+# Genera todos los obstáculos, uno por uno
+func generate_obstacles() -> void:
+	for i in range(total_obstacles):
 		spawn_obstacle()
 
-		# Generar un intervalo aleatorio entre `spawn_interval_min` y `spawn_interval_max`
+		# Espera un intervalo aleatorio antes de generar el siguiente obstáculo
 		var spawn_interval = randf_range(spawn_interval_min, spawn_interval_max)
-
-		# Mostrar en consola cuánto tiempo falta para el siguiente obstáculo
-		print("Próximo obstáculo en: %.2f segundos" % spawn_interval)
-		
 		await get_tree().create_timer(spawn_interval).timeout
+
+	print("Se generaron todos los obstáculos.")
+	end_level()
 
 # Lógica para instanciar un obstáculo
 func spawn_obstacle() -> void:
 	if obstacle_scene == null:
 		print("Error: No se configuró una escena de obstáculo.")
 		return
-
+	# Instanciar el obstáculo desde la escena
 	var obstacle = obstacle_scene.instantiate()
-	
-	# Configurar la posición inicial dentro del rango especificado
-	obstacle.position = Vector2(randf_range(-450, 150), -250)  # Generar en el rango definido
-
+	# Configurar la posición inicial más alta en el eje Y
+	obstacle.position = Vector2(randf_range(-600, 150), -250)
 	# Añadir el obstáculo como hijo de Spawner
 	add_child(obstacle)
-
-	# Incrementar el contador y mostrar un mensaje en consola
+	# Incrementar el contador de obstáculos generados
 	obstacles_generated += 1
 	print("Obstáculo #%d generado en posición: %s" % [obstacles_generated, obstacle.position])
 
-func _accelerate_spawn_rate() -> void:
-	# Reduce progresivamente el intervalo de generación
-	if spawn_interval_min > min_spawn_interval:
-		spawn_interval_min = max(spawn_interval_min / 2, min_spawn_interval)  # Reduce a la mitad o al mínimo
-	if spawn_interval_max > min_spawn_interval:
-		spawn_interval_max = max(spawn_interval_max / 2, min_spawn_interval)  # Reduce a la mitad o al mínimo
-	
-	print("Nueva velocidad de generación: [%f, %f]" % [spawn_interval_min, spawn_interval_max])
-	
-	# Si los intervalos ya están en el mínimo, podemos detener el temporizador de aceleración
-	if spawn_interval_min == min_spawn_interval and spawn_interval_max == min_spawn_interval:
-		timer_acceleration.stop()
-		print("Velocidad máxima alcanzada.")
+# Termina el nivel después de 3 segundos
+func end_level() -> void:
+	if level_ending:
+		return  # Evita múltiples llamadas
+	level_ending = true
+
+	print("Esperando 3 segundos antes de cambiar de nivel...")
+	await get_tree().create_timer(3.0).timeout  # Esperar 3 segundos
+	print("Pasas al siguiente nivel...")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
