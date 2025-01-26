@@ -26,6 +26,7 @@ scale = Vector2(0.526049, 0.526049)
 texture = ExtResource("1_mqrej")
 
 [node name="quit" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
 offset_left = 2287.27
 offset_top = 68.8476
 offset_right = 2895.27
@@ -34,6 +35,7 @@ scale = Vector2(0.159642, 0.159642)
 texture_normal = ExtResource("3_itduo")
 
 [node name="atras" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
 offset_left = 2167.1
 offset_top = 1096.86
 offset_right = 2472.1

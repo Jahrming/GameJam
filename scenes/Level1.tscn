@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://duu7qh014of0k"]
+[gd_scene load_steps=61 format=3 uid="uid://duu7qh014of0k"]
 
 [ext_resource type="Script" path="res://scripts/Level1.gd" id="1_ydmht"]
 [ext_resource type="Texture2D" uid="uid://ode7b18civm0" path="res://assets/images/Nuevo entorno de juego hud.png" id="2_4mioq"]
@@ -6,12 +6,53 @@
 [ext_resource type="Texture2D" uid="uid://bi3thtbvb5rba" path="res://assets/personajes/Animación de muerte.PNG" id="2_cfecu"]
 [ext_resource type="Texture2D" uid="uid://hst02miy460" path="res://assets/personajes/Burbuja normal .PNG" id="3_0vehu"]
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="3_f4d3p"]
+[ext_resource type="Script" path="res://scripts/TimerHUD.gd" id="3_k1ofd"]
+[ext_resource type="Texture2D" uid="uid://dggv087ha8pnd" path="res://assets/images/burbuja vidapp.png" id="4_s0peo"]
 [ext_resource type="Texture2D" uid="uid://d2wehe28yr2wi" path="res://assets/personajes/Hieofalling secuence.png" id="6_42xsy"]
 [ext_resource type="PackedScene" uid="uid://6x6b6j1ox4vu" path="res://scenes/ObstacleTemplate.tscn" id="6_icskm"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="7_5ufxe"]
 [ext_resource type="PackedScene" uid="uid://ctbgkvdpr6n8s" path="res://scenes/pause_menu.tscn" id="9_05c03"]
 [ext_resource type="Texture2D" uid="uid://bwc4h68dscwsw" path="res://assets/images/Mesa de trabajo 71.png" id="10_0cnef"]
 [ext_resource type="PackedScene" uid="uid://bxe8tx5uphvlh" path="res://scenes/menupantallanv_1.tscn" id="12_5nbis"]
+
+[sub_resource type="Animation" id="Animation_dp6wy"]
+resource_name = "Timer"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_yt5l2"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgm67"]
+_data = {
+"RESET": SubResource("Animation_yt5l2"),
+"Timer": SubResource("Animation_dp6wy")
+}
 
 [sub_resource type="GDScript" id="GDScript_oi7l5"]
 script/source = "extends CharacterBody2D
@@ -368,6 +409,36 @@ use_parent_material = true
 position = Vector2(-0.835495, 2.17535)
 scale = Vector2(0.514589, 0.515779)
 texture = ExtResource("2_4mioq")
+
+[node name="TimerHUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_k1ofd")
+
+[node name="Sprite2D" type="Sprite2D" parent="TimerHUD"]
+position = Vector2(72, 138)
+rotation = 1.5708
+scale = Vector2(2.19301, 1.82205)
+texture = ExtResource("4_s0peo")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TimerHUD/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_lgm67")
+}
+autoplay = "RESET"
+
+[node name="TimerLabel" type="Label" parent="TimerHUD"]
+anchors_preset = -1
+anchor_left = -0.034
+anchor_top = 0.049
+anchor_right = 0.039
+anchor_bottom = 0.169
+offset_left = 82.52
+offset_top = 64.72
+offset_right = 76.08
+offset_bottom = 42.32
+theme_type_variation = &"HeaderLarge"
+justification_flags = 235
+clip_text = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
 z_as_relative = false
