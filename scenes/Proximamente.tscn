@@ -1,10 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://0mjybwfsvrdr"]
+[gd_scene load_steps=6 format=3 uid="uid://0mjybwfsvrdr"]
 
-[ext_resource type="Texture2D" uid="uid://cqafiwpwskqc3" path="res://assets/images/1-4b0bd728.png" id="1_go05g"]
+[ext_resource type="Script" path="res://scenes/Proximamente.gd" id="1_h413q"]
+[ext_resource type="Texture2D" uid="uid://b33t7d4xkyufi" path="res://assets/images/edicionwinstate.png" id="1_mqrej"]
+[ext_resource type="Texture2D" uid="uid://dh12v7b82fb1d" path="res://assets/fonts/IMG_1869.PNG" id="3_itduo"]
+[ext_resource type="Texture2D" uid="uid://bgpwcvtebdr6a" path="res://assets/botella/Mesa de trabajo 83 copia 8.png" id="4_recil"]
+[ext_resource type="Texture2D" uid="uid://ccajvkahsddq7" path="res://assets/botella/Mesa de trabajo 83 copia 4.png" id="5_gw78f"]
 
-[node name="Proximamente" type="Node2D"]
+[node name="Proximamente" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h413q")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(629, 359.5)
-scale = Vector2(1.26465, 0.692383)
-texture = ExtResource("1_go05g")
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -10.0
+offset_right = 2446.0
+offset_bottom = 1362.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.526049, 0.526049)
+texture = ExtResource("1_mqrej")
+
+[node name="quit" type="TextureButton" parent="TextureRect"]
+offset_left = 2287.27
+offset_top = 68.8476
+offset_right = 2895.27
+offset_bottom = 654.848
+scale = Vector2(0.159642, 0.159642)
+texture_normal = ExtResource("3_itduo")
+
+[node name="atras" type="TextureButton" parent="TextureRect"]
+offset_left = 2167.1
+offset_top = 1096.86
+offset_right = 2472.1
+offset_bottom = 1387.86
+scale = Vector2(0.777297, 0.777297)
+texture_normal = ExtResource("4_recil")
+texture_pressed = ExtResource("5_gw78f")
+texture_hover = ExtResource("5_gw78f")
+
+[connection signal="pressed" from="TextureRect/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="TextureRect/atras" to="." method="_on_atras_pressed"]
