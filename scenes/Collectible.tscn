@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsoykc3llt6kt"]
+
+[ext_resource type="Script" path="res://scripts/Collectible.gd" id="1_k7tcf"]
+[ext_resource type="Texture2D" uid="uid://c37m3pu1cmipl" path="res://assets/personajes/enemy.png" id="1_n5xbw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fwmdu"]
+radius = 63.0079
+
+[node name="Collectible" type="Area2D"]
+script = ExtResource("1_k7tcf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(135, 110)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_n5xbw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(136, 111)
+shape = SubResource("CircleShape2D_fwmdu")
