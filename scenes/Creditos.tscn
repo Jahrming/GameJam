@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://05hhbukywm8x"]
+
+[ext_resource type="Texture2D" uid="uid://dtdnpnpqdhg6e" path="res://assets/fonts/Mesa de trabajo 41 copia 4.png" id="1_0gnyq"]
+[ext_resource type="Script" path="res://scenes/Control.gd" id="1_r22uy"]
+[ext_resource type="Texture2D" uid="uid://dh12v7b82fb1d" path="res://assets/fonts/IMG_1869.PNG" id="2_qsxih"]
+[ext_resource type="Texture2D" uid="uid://cc7heswk544st" path="res://assets/images/Mesa de trabajo 83 copia 4.png" id="4_e2nmc"]
+[ext_resource type="Texture2D" uid="uid://c01qfd800o6ec" path="res://assets/images/Mesa de trabajo 83 copia.png" id="5_vbyo1"]
+
+[node name="Creditos" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1284.0
+offset_bottom = 718.0
+script = ExtResource("1_r22uy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(638.75, 357)
+scale = Vector2(0.523954, 0.526012)
+texture = ExtResource("1_0gnyq")
+
+[node name="salir" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 1213.0
+offset_top = 217.0
+offset_right = 1821.0
+offset_bottom = 803.0
+scale = Vector2(0.05472, 0.05472)
+texture_normal = ExtResource("2_qsxih")
+
+[node name="volver" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 278.0
+offset_right = 299.0
+offset_bottom = 569.0
+texture_normal = ExtResource("4_e2nmc")
+texture_pressed = ExtResource("5_vbyo1")
+texture_hover = ExtResource("5_vbyo1")
+
+[connection signal="pressed" from="Control/salir" to="Control" method="_on_salir_pressed"]
+[connection signal="pressed" from="Control/volver" to="Control" method="_on_volver_pressed"]

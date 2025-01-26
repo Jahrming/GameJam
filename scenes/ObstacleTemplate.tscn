@@ -1,18 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmudprryk23v3"]
+[gd_scene load_steps=7 format=3 uid="uid://6x6b6j1ox4vu"]
 
 [ext_resource type="Script" path="res://scripts/ObstacleTemplate.gd" id="1_ge8n8"]
-[ext_resource type="Texture2D" uid="uid://c37m3pu1cmipl" path="res://assets/personajes/enemy.png" id="1_vtrf2"]
+[ext_resource type="Texture2D" uid="uid://d2wehe28yr2wi" path="res://assets/personajes/Hieofalling secuence.png" id="2_ysl40"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_15cm4"]
-radius = 104.005
+[sub_resource type="CircleShape2D" id="CircleShape2D_6aahy"]
+radius = 67.0672
+
+[sub_resource type="Animation" id="Animation_37irb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ybr87"]
+resource_name = "jesus"
+length = 1.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gl51k"]
+_data = {
+"RESET": SubResource("Animation_37irb"),
+"jesus": SubResource("Animation_ybr87")
+}
 
 [node name="ObstacleTemplate" type="Area2D"]
 script = ExtResource("1_ge8n8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(243, 109)
-texture = ExtResource("1_vtrf2")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+rotation = -0.00231151
+shape = SubResource("CircleShape2D_6aahy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(244, 110)
-shape = SubResource("CircleShape2D_15cm4")
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, -2)
+rotation = -0.3735
+scale = Vector2(1.0454, 1.09653)
+texture = ExtResource("2_ysl40")
+hframes = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2"]
+libraries = {
+"": SubResource("AnimationLibrary_gl51k")
+}
+autoplay = "jesus"

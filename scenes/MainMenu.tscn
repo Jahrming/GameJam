@@ -1,39 +1,69 @@
-[gd_scene load_steps=8 format=3 uid="uid://hkulpsgm6m5v"]
+[gd_scene load_steps=15 format=3 uid="uid://hkulpsgm6m5v"]
 
-[ext_resource type="Texture2D" uid="uid://b7ilea2b2gk0n" path="res://assets/fonts/my-first-animation-its-very-short-but-something-v0-rg6gluzwn4fb1.png" id="1_gmjbc"]
-[ext_resource type="Script" path="res://scripts/ButtonStart.gd" id="1_p6px0"]
-[ext_resource type="Script" path="res://scripts/ButtonExit.gd" id="2_ogwfm"]
+[ext_resource type="Texture2D" uid="uid://dobs7v0t4wdth" path="res://assets/fonts/Mesa de trabajo 50 (1).png" id="1_ad4rv"]
+[ext_resource type="Script" path="res://scenes/Control.gd" id="1_jdb3c"]
+[ext_resource type="Texture2D" uid="uid://cnhgw0q78tgdy" path="res://assets/images/Chica interfaz .PNG" id="2_qkt2k"]
+[ext_resource type="Texture2D" uid="uid://con3iy6vdu17p" path="res://assets/fonts/Mesa de trabajo 72.png" id="3_vuq75"]
+[ext_resource type="Texture2D" uid="uid://dh12v7b82fb1d" path="res://assets/fonts/IMG_1869.PNG" id="4_3lko5"]
+[ext_resource type="Texture2D" uid="uid://cjjvocjhdka7n" path="res://assets/fonts/Mesa de trabajo 75.png" id="4_xjgpb"]
+[ext_resource type="Texture2D" uid="uid://defucgexduocy" path="res://assets/fonts/creditos (1).png" id="5_u31q3"]
+[ext_resource type="Texture2D" uid="uid://b7gbo2yosxi0f" path="res://assets/fonts/creditos (2).png" id="6_s0ink"]
+[ext_resource type="AudioStream" uid="uid://bbny3ghga3d2q" path="res://assets/audio/Pop1.mp3" id="8_4yuwg"]
+[ext_resource type="AudioStream" uid="uid://cjke03loqtaiy" path="res://assets/audio/K0N0R - setup.exe (No copyright)  Frutiger Aero, Windows 7 Instrumental Music.mp3" id="9_y8v3u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sqn3f"]
-texture = ExtResource("1_gmjbc")
+texture = ExtResource("1_ad4rv")
 modulate_color = Color(0.509286, 0.509286, 0.509286, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iel1l"]
-bg_color = Color(0.589949, 0.57249, 0.777858, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
+[sub_resource type="Animation" id="Animation_d3luh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Control/VBoxContainer2/Creditos:texture_normal")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_u31q3")]
+}
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o32ld"]
-bg_color = Color(0.407409, 0.383989, 0.598787, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
+[sub_resource type="Animation" id="Animation_bvfqo"]
+resource_name = "Sparkle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45mlp"]
-bg_color = Color(0.267777, 0.248555, 0.413244, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_riudm"]
+_data = {
+"RESET": SubResource("Animation_d3luh"),
+"Sparkle": SubResource("Animation_bvfqo")
+}
 
 [node name="MainMenu" type="CanvasLayer"]
 
@@ -46,60 +76,87 @@ offset_top = 1.0
 offset_right = 2.0
 offset_bottom = -0.0960083
 grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_jdb3c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control"]
+position = Vector2(12, -1)
+stream = ExtResource("9_y8v3u")
+volume_db = -20.333
+autoplay = true
 
 [node name="Panel" type="Panel" parent="Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = -0.0015456
+anchor_top = 0.00711902
+anchor_right = 0.998454
+anchor_bottom = 1.00712
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.999253, 1.04825)
 theme_override_styles/panel = SubResource("StyleBoxTexture_sqn3f")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -37.5
-offset_top = -164.0
-offset_right = 37.5
-offset_bottom = -141.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 34
-text = "GameJam"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 662.0
+offset_top = 481.0
+offset_right = 1153.0
+offset_bottom = 639.0
+scale = Vector2(0.52, 0.52)
+pivot_offset = Vector2(-6, 4)
+
+[node name="BoxContainer" type="TextureButton" parent="Control/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_vuq75")
+texture_pressed = ExtResource("4_xjgpb")
+texture_hover = ExtResource("4_xjgpb")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -52.0
-offset_top = -33.0
-offset_right = 52.0
-offset_bottom = 33.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
+anchors_preset = -1
+anchor_left = -0.472
+anchor_top = 1.231
+anchor_right = -0.472
+anchor_bottom = 1.231
+offset_left = 1603.77
+offset_top = -380.586
+offset_right = 3650.77
+offset_bottom = 1212.41
+scale = Vector2(0.128523, 0.127084)
 
-[node name="ButtonStart" type="Button" parent="Control/VBoxContainer"]
+[node name="Creditos" type="TextureButton" parent="Control/VBoxContainer2"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_iel1l")
-theme_override_styles/hover = SubResource("StyleBoxFlat_o32ld")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_45mlp")
-text = "Iniciar Juego"
-script = ExtResource("1_p6px0")
+texture_normal = ExtResource("5_u31q3")
+texture_pressed = ExtResource("6_s0ink")
+texture_hover = ExtResource("6_s0ink")
 
-[node name="ButtonExit" type="Button" parent="Control/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_iel1l")
-theme_override_styles/hover = SubResource("StyleBoxFlat_o32ld")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_45mlp")
-text = "Salir"
-script = ExtResource("2_ogwfm")
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Control"]
+stream = ExtResource("8_4yuwg")
+autoplay = true
+
+[node name="salir" type="TextureButton" parent="."]
+offset_left = 1224.0
+offset_top = 38.0
+offset_right = 1832.0
+offset_bottom = 624.0
+scale = Vector2(0.05472, 0.05472)
+texture_normal = ExtResource("4_3lko5")
+
+[node name="ChicaInterfaz" type="Sprite2D" parent="."]
+position = Vector2(432, 411)
+scale = Vector2(0.621062, 0.621062)
+texture = ExtResource("2_qkt2k")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChicaInterfaz"]
+libraries = {
+"": SubResource("AnimationLibrary_riudm")
+}
+autoplay = "Sparkle"
+
+[connection signal="pressed" from="Control/VBoxContainer/BoxContainer" to="Control" method="_on_box_container_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer2/Creditos" to="Control" method="_on_creditos_pressed"]
+[connection signal="pressed" from="salir" to="Control" method="_on_salir_pressed"]

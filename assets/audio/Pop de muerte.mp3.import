@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfor6jt6d352p"
+path="res://.godot/imported/Pop de muerte.mp3-3884af9b9b8a234fb7e6ef9409ff57ef.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Pop de muerte.mp3"
+dest_files=["res://.godot/imported/Pop de muerte.mp3-3884af9b9b8a234fb7e6ef9409ff57ef.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjke03loqtaiy"
+path="res://.godot/imported/K0N0R - setup.exe (No copyright)  Frutiger Aero, Windows 7 Instrumental Music.mp3-64d590e5a9bc702fb0a3e10f00beb112.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/K0N0R - setup.exe (No copyright)  Frutiger Aero, Windows 7 Instrumental Music.mp3"
+dest_files=["res://.godot/imported/K0N0R - setup.exe (No copyright)  Frutiger Aero, Windows 7 Instrumental Music.mp3-64d590e5a9bc702fb0a3e10f00beb112.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
