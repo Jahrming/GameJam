@@ -27,7 +27,6 @@ func on_player_touched_obstacle() -> void:
 	timer_hud.pause_timer()
 	
 	# Guardar el tiempo en Global
-	Global.last_play_time = timer_hud.get_elapsed_time()
 
 	# Cambiar a la escena Game Over
 	get_tree().change_scene("res://scenes/GameOver.tscn")
