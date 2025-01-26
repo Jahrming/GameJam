@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://0mjybwfsvrdr"]
+
+[ext_resource type="Texture2D" uid="uid://cqafiwpwskqc3" path="res://assets/images/1-4b0bd728.png" id="1_go05g"]
+
+[node name="Proximamente" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(629, 359.5)
+scale = Vector2(1.26465, 0.692383)
+texture = ExtResource("1_go05g")

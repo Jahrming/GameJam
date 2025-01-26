@@ -36,5 +36,5 @@ func take_damage():
 	$CollisionShape2D.disabled = false  # Reactivar colisión
 
 func die():
-	print("¡Jugador perdió todas las vidas! Cambiando al MainMenu...")
-	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	print("¡Jugador perdió todas las vidas! Cambiando al GameOver...")
+	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")

@@ -32,7 +32,7 @@ func spawn_obstacle() -> void:
 	# Instanciar el obstáculo desde la escena
 	var obstacle = obstacle_scene.instantiate()
 	# Configurar la posición inicial más alta en el eje Y
-	obstacle.position = Vector2(randf_range(-600, 150), -250)
+	obstacle.position = Vector2(randf_range(-450, 150), -250)
 	# Añadir el obstáculo como hijo de Spawner
 	add_child(obstacle)
 	# Incrementar el contador de obstáculos generados
@@ -48,4 +48,4 @@ func end_level() -> void:
 	print("Esperando 3 segundos antes de cambiar de nivel...")
 	await get_tree().create_timer(3.0).timeout  # Esperar 3 segundos
 	print("Pasas al siguiente nivel...")
-	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Proximamente.tscn")

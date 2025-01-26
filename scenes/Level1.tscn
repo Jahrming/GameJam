@@ -419,7 +419,7 @@ obstacle_scene = ExtResource("6_icskm")
 [node name="BorderLeft" type="StaticBody2D" parent="Borders"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Borders/BorderLeft"]
-position = Vector2(-1062, -98)
+position = Vector2(-1026, -176)
 rotation = 3.09447
 scale = Vector2(3.04579, 1.57418)
 texture = ExtResource("10_0cnef")
@@ -454,3 +454,9 @@ position = Vector2(1, 1)
 
 [node name="PauseMenu" parent="Camera2D" instance=ExtResource("9_05c03")]
 visible = false
+
+[node name="Button" type="Button" parent="."]
+offset_left = 930.0
+offset_top = -250.0
+offset_right = 1234.0
+offset_bottom = 47.0

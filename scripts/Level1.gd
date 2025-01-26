@@ -32,7 +32,7 @@ func on_player_reaches_goal():
 	# Verificar si el jugador puede completar el nivel
 	if meta_activated:
 		print("¡Nivel completado! Cambiando al siguiente nivel...")
-		get_tree().change_scene("res://scenes/Level2.tscn")
+		get_tree().change_scene("res://scenes/Proximamente.tscn")
 	else:
 		print("La meta aún no está activa.")
 		
@@ -53,4 +53,12 @@ func pauseMenu():
 		Engine.time_scale = 0
 	
 	paused = !paused
+	
+func toggle_pause():
+	# Alterna el estado de pausa
+	paused = !paused
+	get_tree().paused = paused  # Pausa/despausa el árbol globalmente
+	if pause_menu:
+		pause_menu.visible = paused  # Muestra u oculta el menú de pausa
+
 
