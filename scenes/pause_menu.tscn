@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctbgkvdpr6n8s"]
 
-[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_kdrne"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_pqo6u"]
 [ext_resource type="Shader" path="res://scenes/pause_menu.gdshader" id="1_w2n1c"]
-[ext_resource type="Script" path="res://scenes/ButtonResume.gd" id="3_7bha0"]
-[ext_resource type="Script" path="res://scenes/ButtonQuitResume.gd" id="4_slcwp"]
+[ext_resource type="Script" path="res://scripts/ButtonResume.gd" id="3_31wom"]
+[ext_resource type="Script" path="res://scripts/ButtonQuitResume.gd" id="4_8wuju"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5qtor"]
 shader = ExtResource("1_w2n1c")
@@ -43,7 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_kdrne")
+script = ExtResource("1_pqo6u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_5qtor")
@@ -80,7 +80,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_3qyig")
 theme_override_styles/hover = SubResource("StyleBoxFlat_k27ax")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jsc1u")
 text = "Volver"
-script = ExtResource("3_7bha0")
+script = ExtResource("3_31wom")
 
 [node name="ButtonQuit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -88,7 +88,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_3qyig")
 theme_override_styles/hover = SubResource("StyleBoxFlat_k27ax")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jsc1u")
 text = "Salir"
-script = ExtResource("4_slcwp")
+script = ExtResource("4_8wuju")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

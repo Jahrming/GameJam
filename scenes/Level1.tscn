@@ -1,15 +1,16 @@
-[gd_scene load_steps=54 format=3 uid="uid://duu7qh014of0k"]
+[gd_scene load_steps=55 format=3 uid="uid://duu7qh014of0k"]
 
 [ext_resource type="Script" path="res://scripts/Level1.gd" id="1_ydmht"]
+[ext_resource type="Texture2D" uid="uid://bv3s8gsi3s3av" path="res://assets/images/Mesa de trabajo 41 copia.png" id="2_45ufn"]
 [ext_resource type="Texture2D" uid="uid://ds5x50vsmgj3i" path="res://assets/personajes/Burbuja mareada.PNG" id="2_51h0m"]
 [ext_resource type="Texture2D" uid="uid://bi3thtbvb5rba" path="res://assets/personajes/Animación de muerte.PNG" id="2_cfecu"]
 [ext_resource type="Texture2D" uid="uid://hst02miy460" path="res://assets/personajes/Burbuja normal .PNG" id="3_0vehu"]
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="3_f4d3p"]
 [ext_resource type="Texture2D" uid="uid://d2wehe28yr2wi" path="res://assets/personajes/Hieofalling secuence.png" id="6_42xsy"]
-[ext_resource type="Texture2D" uid="uid://cby5pcjg7x4wg" path="res://assets/personajes/border.png" id="6_f6dkj"]
 [ext_resource type="PackedScene" uid="uid://6x6b6j1ox4vu" path="res://scenes/ObstacleTemplate.tscn" id="6_icskm"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="7_5ufxe"]
 [ext_resource type="PackedScene" uid="uid://ctbgkvdpr6n8s" path="res://scenes/pause_menu.tscn" id="9_05c03"]
+[ext_resource type="Texture2D" uid="uid://bwc4h68dscwsw" path="res://assets/images/Mesa de trabajo 71.png" id="10_0cnef"]
 
 [sub_resource type="GDScript" id="GDScript_oi7l5"]
 script/source = "extends CharacterBody2D
@@ -304,7 +305,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfqfq"]
-radius = 99.925
+radius = 50.01
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2pt1"]
 radius = 67.0672
@@ -348,14 +349,24 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5csh1"]
-size = Vector2(669, 251.375)
+size = Vector2(713.459, 305.683)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guccf"]
-size = Vector2(222.697, 698)
+size = Vector2(312.349, 712)
 
 [node name="Level1" type="Node2D"]
 position = Vector2(560, 305)
 script = ExtResource("1_ydmht")
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+y_sort_enabled = true
+texture_filter = 2
+texture_repeat = 1
+use_parent_material = true
+position = Vector2(11.5, -2.28882e-05)
+scale = Vector2(2.23579, 2.24096)
+texture = ExtResource("2_45ufn")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 z_as_relative = false
@@ -364,15 +375,15 @@ motion_mode = 1
 script = SubResource("GDScript_oi7l5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(-21, 254)
-scale = Vector2(0.344217, 0.325742)
+position = Vector2(-24, 276)
+scale = Vector2(0.168477, 0.159434)
 sprite_frames = SubResource("SpriteFrames_4g5p2")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.0793683
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 254)
+position = Vector2(-11, 276)
 rotation = 4.8884
 shape = SubResource("CircleShape2D_dfqfq")
 
@@ -407,12 +418,13 @@ obstacle_scene = ExtResource("6_icskm")
 [node name="BorderLeft" type="StaticBody2D" parent="Borders"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Borders/BorderLeft"]
-position = Vector2(-500, 0)
-rotation = 1.5708
-texture = ExtResource("6_f6dkj")
+position = Vector2(-479.553, -20.9418)
+rotation = 3.09447
+scale = Vector2(3.04579, 1.57418)
+texture = ExtResource("10_0cnef")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BorderLeft"]
-position = Vector2(-516.687, -3.5)
+position = Vector2(-463, -8)
 rotation = 1.5655
 shape = SubResource("RectangleShape2D_5csh1")
 one_way_collision_margin = 0.0
@@ -420,12 +432,15 @@ one_way_collision_margin = 0.0
 [node name="BorderRight" type="StaticBody2D" parent="Borders"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Borders/BorderRight"]
-position = Vector2(500, 25)
-rotation = -1.56973
-texture = ExtResource("6_f6dkj")
+show_behind_parent = true
+position = Vector2(366.944, -13.6071)
+rotation = 6.03011
+scale = Vector2(2.38754, 1.53939)
+texture = ExtResource("10_0cnef")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BorderRight"]
-position = Vector2(496, 3.99999)
+position = Vector2(526, -6)
 shape = SubResource("RectangleShape2D_guccf")
 
 [node name="Goal" type="Area2D" parent="."]
