@@ -1,14 +1,13 @@
-[gd_scene load_steps=56 format=3 uid="uid://duu7qh014of0k"]
+[gd_scene load_steps=54 format=3 uid="uid://duu7qh014of0k"]
 
 [ext_resource type="Script" path="res://scripts/Level1.gd" id="1_ydmht"]
 [ext_resource type="Texture2D" uid="uid://ds5x50vsmgj3i" path="res://assets/personajes/Burbuja mareada.PNG" id="2_51h0m"]
 [ext_resource type="Texture2D" uid="uid://bi3thtbvb5rba" path="res://assets/personajes/Animación de muerte.PNG" id="2_cfecu"]
 [ext_resource type="Texture2D" uid="uid://hst02miy460" path="res://assets/personajes/Burbuja normal .PNG" id="3_0vehu"]
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="3_f4d3p"]
-[ext_resource type="Texture2D" uid="uid://dxml811lqojns" path="res://assets/personajes/Mesa de trabajo 54_1.png" id="4_33w22"]
-[ext_resource type="Texture2D" uid="uid://vh34f7lqnve0" path="res://assets/personajes/Mesa de trabajo 54.png" id="5_5nmnx"]
+[ext_resource type="Texture2D" uid="uid://d2wehe28yr2wi" path="res://assets/personajes/Hieofalling secuence.png" id="6_42xsy"]
 [ext_resource type="Texture2D" uid="uid://cby5pcjg7x4wg" path="res://assets/personajes/border.png" id="6_f6dkj"]
-[ext_resource type="PackedScene" path="res://scenes/ObstacleTemplate.tscn" id="6_icskm"]
+[ext_resource type="PackedScene" uid="uid://6x6b6j1ox4vu" path="res://scenes/ObstacleTemplate.tscn" id="6_icskm"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="7_5ufxe"]
 [ext_resource type="PackedScene" uid="uid://ctbgkvdpr6n8s" path="res://scenes/pause_menu.tscn" id="9_05c03"]
 
@@ -315,79 +314,37 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_33w22")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.637045]
+"values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_k1mcq"]
-resource_name = "palpitar"
-length = 1.2
+[sub_resource type="Animation" id="Animation_ybr87"]
+resource_name = "jesus"
+length = 1.3
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_33w22"), ExtResource("5_5nmnx"), ExtResource("5_5nmnx"), ExtResource("5_5nmnx"), ExtResource("5_5nmnx"), ExtResource("5_5nmnx"), ExtResource("5_5nmnx"), ExtResource("5_5nmnx"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("5_5nmnx"), ExtResource("5_5nmnx"), ExtResource("5_5nmnx")]
-}
-
-[sub_resource type="Animation" id="Animation_02kgh"]
-resource_name = "rotarSuave"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22"), ExtResource("4_33w22")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [-0.349066, -0.357792, -0.366519, -0.375246, -0.383972, -0.392699, -0.401426, -0.410152]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gl51k"]
 _data = {
 "RESET": SubResource("Animation_37irb"),
-"palpitar": SubResource("Animation_k1mcq"),
-"rotarSuave": SubResource("Animation_02kgh")
+"jesus": SubResource("Animation_ybr87")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5csh1"]
@@ -407,10 +364,12 @@ motion_mode = 1
 script = SubResource("GDScript_oi7l5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(-7, 264)
+position = Vector2(-21, 254)
 scale = Vector2(0.344217, 0.325742)
 sprite_frames = SubResource("SpriteFrames_4g5p2")
-animation = &"daño"
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0793683
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 254)
@@ -425,14 +384,17 @@ rotation = -0.00231151
 shape = SubResource("CircleShape2D_g2pt1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
-rotation = -0.637045
-texture = ExtResource("4_33w22")
+position = Vector2(-9.53674e-07, -2)
+rotation = -0.3735
+scale = Vector2(1.0454, 1.09653)
+texture = ExtResource("6_42xsy")
+hframes = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacle/Sprite2D"]
 libraries = {
 "": SubResource("AnimationLibrary_gl51k")
 }
-autoplay = "rotarSuave"
+autoplay = "jesus"
 
 [node name="Spawner" type="Node2D" parent="."]
 rotation = 0.141372
