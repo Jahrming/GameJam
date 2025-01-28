@@ -14,33 +14,31 @@ func _ready():
 	$Spawner.start_spawning_infinite()
 
 	# Iniciar el temporizador en cuenta regresiva
-	timer_hud.start_countdown(200)  # Inicia la cuenta regresiva desde 200 segundos
+	timer_hud.start_countdown(120)  # Inicia la cuenta regresiva desde 200 segundos
 	timer_hud.connect("timer_finished", Callable(self, "_on_timer_finished"))
 
 func _on_timer_finished() -> void:
 	# Manejar el evento cuando el tiempo llegue a 0
-	print("¡El tiempo se acabó! Fin del nivel.")
-	on_player_touched_obstacle()  # Reutilizamos la lógica para terminar el nivel
+	print("¡El tiempo se acabó! Cambiando a la escena Proximamente.tscn.")
+	get_tree().change_scene_to_file("res://scenes/Proximamente.tscn")  # Cambiar a la escena Proximamente.tscn
 
 func on_player_touched_obstacle() -> void:
 	# Pausar el temporizador
 	timer_hud.pause_timer()
 	
-	# Guardar el tiempo en Global
-
-	# Cambiar a la escena Game Over
+	# Cambiar a la escena GameOver
+	print("¡Jugador tocado por un obstáculo! Cambiando a la escena GameOver.")
 	get_tree().change_scene("res://scenes/GameOver.tscn")
 
-#codigo pausa
-@onready var pause_menu =$Camera2D/PauseMenu
+# Código de pausa
+@onready var pause_menu = $Camera2D/PauseMenu
 var paused = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
-		pauseMenu()
+		pause_menu_toggle()
 
-
-func pauseMenu():
+func pause_menu_toggle():
 	if paused:
 		pause_menu.hide()
 		Engine.time_scale = 1
@@ -49,4 +47,4 @@ func pauseMenu():
 		Engine.time_scale = 0
 	
 	paused = !paused
-	
+

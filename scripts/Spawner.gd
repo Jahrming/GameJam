@@ -47,7 +47,7 @@ func spawn_obstacle() -> void:
 	var obstacle = obstacle_scene.instantiate()
 	
 	# Configurar la posición inicial dentro del rango especificado
-	obstacle.position = Vector2(randf_range(-450, 150), -250)  # Generar en el rango definido
+	obstacle.position = Vector2(randf_range(-450, 450), -255)  # Generar en el rango definido
 
 	# Añadir el obstáculo como hijo de Spawner
 	add_child(obstacle)
